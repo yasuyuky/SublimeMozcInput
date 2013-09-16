@@ -17,7 +17,7 @@ Requirements
 Screenshot
 ----------
 
-![Movie](mozc_movie.gif)
+![Movie](http://yasuyuky.github.io/SublimeMozcInput/images/mozc_movie.gif)
 
 
 
