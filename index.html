@@ -1,0 +1,226 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>SublimeMozcInput</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">SublimeMozcInput</h1>
+    </header>
+    <div id="container">
+      <p class="tagline"></p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/yasuyuky/SublimeMozcInput/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/yasuyuky/SublimeMozcInput/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/yasuyuky/SublimeMozcInput" class="code">View SublimeMozcInput on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="sublime-mozc-input" class="anchor" href="#sublime-mozc-input"><span class="octicon octicon-link"></span></a>Sublime Mozc Input</h1>
+
+<p>This is Sublime Text 2/3 Plugin for Using Mozc(<code>mozc_server</code>) 
+via <code>mozc_emacs_helper</code></p>
+
+<p>Though this plugin is intended to be used on Linux,
+it may work on the other platforms.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li><a href="https://code.google.com/p/mozc/">Mozc</a></li>
+<li>emacs-mozc</li>
+</ul><h2>
+<a name="screenshot" class="anchor" href="#screenshot"><span class="octicon octicon-link"></span></a>Screenshot</h2>
+
+<p><img src="mozc_movie.gif" alt="Movie"></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ol>
+<li>Install Mozc and emacs-mozc (see official instruction)</li>
+<li>Check out the project and Copy <code>Mozc Input</code> directory 
+to your <strong>Packages</strong> directory</li>
+</ol><h3>
+<a name="package-control" class="anchor" href="#package-control"><span class="octicon octicon-link"></span></a>Package Control</h3>
+
+<p>Currently not unavalable</p>
+
+<h3>
+<a name="install-plugin-from-github" class="anchor" href="#install-plugin-from-github"><span class="octicon octicon-link"></span></a>Install plugin from github</h3>
+
+<p>This is exsample.</p>
+
+<pre><code>cd /path/to/your/repo/directory
+git clone git://guthub.com/yasuyuky/SublimeMozcInput
+cd /path/to/your/packages/directory
+ln -s /path/to/your/repo/directory/SublimeMozcInput/Input Mozc
+</code></pre>
+
+<h3>
+<a name="install-mozc-to-linux-using-package-control" class="anchor" href="#install-mozc-to-linux-using-package-control"><span class="octicon octicon-link"></span></a>Install Mozc to Linux Using Package Control</h3>
+
+<h4>
+<a name="debianubuntu" class="anchor" href="#debianubuntu"><span class="octicon octicon-link"></span></a>Debian/Ubuntu</h4>
+
+<pre><code>sudo apt-get install mozc emacs-mozc
+</code></pre>
+
+<h4>
+<a name="fedoraenterprize-linuxincluding-centos" class="anchor" href="#fedoraenterprize-linuxincluding-centos"><span class="octicon octicon-link"></span></a>Fedora/Enterprize Linux(including CentOS)</h4>
+
+<p>choose and add repository (.repo) file 
+from <a href="http://download.opensuse.org/repositories/home:/sawaa/">http://download.opensuse.org/repositories/home:/sawaa/</a>
+to your /etc/yum.repos.d/</p>
+
+<pre><code>sudo yum install mozc emacs-mozc
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h3>
+
+<ul>
+<li>
+<code>ctrl+¥</code> to toggle <code>mozc_mode</code>
+</li>
+<li>Press any character key to enter <code>mozc_input_mode</code>
+</li>
+<li>
+<code>mozc_input_mode</code>
+
+<ul>
+<li>
+<code>space</code> key to convert</li>
+<li>
+<code>tab</code> key to show suggest</li>
+</ul>
+</li>
+</ul><h3>
+<a name="set-keybind-to-toggle-mozc-mode" class="anchor" href="#set-keybind-to-toggle-mozc-mode"><span class="octicon octicon-link"></span></a>Set keybind to toggle mozc mode</h3>
+
+<p>Default keybind to <code>toggle_mozc</code> on OSX/Linux is <code>ctrl+¥</code></p>
+
+<p>To change this, set your keybind file 
+(<code>Preferences</code> -&gt; <code>Key Bindings - User</code>) like this.</p>
+
+<pre><code>{ "keys": ["ctrl+space"], "command": "toggle_mozc" }
+</code></pre>
+
+<h3>
+<a name="optional-keybindings" class="anchor" href="#optional-keybindings"><span class="octicon octicon-link"></span></a>Optional Keybindings</h3>
+
+<p>Kotoeri like keybindings sample</p>
+
+<pre><code>// Convert to Hiragana
+{"keys": ["ctrl+j"],
+ "command": "mozc_send_key",
+ "args": {"key": "f6"},
+ "context": [{"key": "mozc_input_mode"}]},
+
+// Convert to Katakana
+{"keys": ["ctrl+k"],
+ "command": "mozc_send_key",
+ "args": {"key": "f7"},
+ "context": [{"key": "mozc_input_mode"}]},
+
+// Convert to Zenkaku
+{"keys": ["ctrl+l"],
+ "command": "mozc_send_key",
+ "args": {"key": "f9"},
+ "context": [{"key": "mozc_input_mode"}]},
+
+// Convert to Hankaku
+{"keys":["ctrl+;"],
+ "command": "mozc_send_key",
+ "args": {"key": "f10"},
+ "context": [{"key": "mozc_input_mode"}]},
+
+// Activate/Deactivate mozc_mode
+{"keys": ["ctrl+/"], "command": "activate_mozc"},
+{"keys": ["ctrl+:"], "command": "deactivate_mozc"}
+</code></pre>
+
+<h3>
+<a name="optional-settings" class="anchor" href="#optional-settings"><span class="octicon octicon-link"></span></a>Optional Settings</h3>
+
+<p>Set optional settings in <strong>MozcInput.sublime-settings</strong>.
+You can access via <code>Preferences</code> -&gt; <code>Package Settings</code> 
+-&gt; <code>Mozc Input</code> -&gt; <code>Settings - User</code></p>
+
+<pre><code>{
+  "mozc_emacs_helper": "/path/to/mozc_emacs_helper",
+  // default: "mozc_emacs_helper"
+  // or you can use mozc_emacs_helper over ssh
+  // "mozc_emacs_helper": "ssh hostname mozc_emacs_helper",
+
+  "mozc_mode_line": "[日本語]",
+  // default: "[Mozc]"
+
+  "mozc_input_mode_line": "[入力中]",
+  // default: "✎Mozc"
+
+  "mozc_highlight_style": "function",
+  // default: "comment"
+
+  "mozc_use_quick_panel": false
+  // default: true
+  // if you don't wanna use quick_panel for suggest
+}
+</code></pre>
+
+<h2>
+<a name="feedback" class="anchor" href="#feedback"><span class="octicon octicon-link"></span></a>Feedback</h2>
+
+<p>This plugin is tested on Ubuntu12.04 and Mac OSX.</p>
+
+<p>If you find a problem on your environment, report it.</p>
+
+<p><a href="https://github.com/yasuyuky" class="user-mention">@yasuyuky</a> on Twitter</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/yasuyuky" class="avatar"><img src="https://0.gravatar.com/avatar/c7cc3bd12795831fb50c9158e2b5425a?d=https%3A%2F%2Fidenticons.github.com%2F63362f610a3b912955c36f6323735632.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/yasuyuky">yasuyuky</a> maintains <a href="https://github.com/yasuyuky/SublimeMozcInput">SublimeMozcInput</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/yasuyuky/SublimeMozcInput/tarball/master" class="tar">tar</a><a href="https://github.com/yasuyuky/SublimeMozcInput/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
