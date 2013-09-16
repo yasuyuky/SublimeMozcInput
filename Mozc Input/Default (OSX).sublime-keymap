@@ -1,0 +1,6 @@
+[
+    // for Mozc ( 日本語入力 ) 
+    // { "keys": ["ctrl+:"], "command": "deactivate_mozc" },
+    // { "keys": ["ctrl+/"], "command": "activate_mozc" },
+    { "keys": ["ctrl+¥"], "command": "toggle_mozc" }
+]
