@@ -11,21 +11,31 @@ import json
 PY2 = sys.version_info < (3, 0)
 if not PY2: basestring = str
 
-settings = sublime.load_settings("MozcInput.sublime-settings")
+def init_mozc():
+    global helper, mozc_mode_line, mozc_input_mode_line
+    global mozc_highlight_style, mozc_use_quick_panel
+    global mozc_debug_mode
+    settings = sublime.load_settings("MozcInput.sublime-settings")
 
-helper = subprocess.Popen(settings.get("mozc_emacs_helper",
-                                       "mozc_emacs_helper").split(),
+    helper = subprocess.Popen(settings.get("mozc_emacs_helper",
+                                           "mozc_emacs_helper").split(),
                               stdin=subprocess.PIPE,
                               stdout=subprocess.PIPE)
+    helper.stdout.readline()
 
-helper.stdout.readline()
+    mozc_mode_line = settings.get("mozc_mode_line", "[Mozc]")
+    mozc_input_mode_line = settings.get("mozc_input_mode_line", u"✎Mozc")
+    mozc_highlight_style = settings.get("mozc_highlight_style", "string")
+    mozc_use_quick_panel = settings.get("mozc_use_quick_panel", True)
+    mozc_debug_mode = settings.get("mozc_debug_mode", False)
 
-mozc_mode_line = settings.get("mozc_mode_line", "[Mozc]")
-mozc_input_mode_line = settings.get("mozc_input_mode_line", u"✎Mozc")
-mozc_highlight_style = settings.get("mozc_highlight_style", "string")
-mozc_use_quick_panel = settings.get("mozc_use_quick_panel", True)
-mozc_debug_mode = settings.get("mozc_debug_mode", False)
+# for Sublime Text 2
+if sublime.version().startswith('2'):
+    init_mozc()
 
+# for Sublime Text 3
+def plugin_loaded():
+    init_mozc()
 
 mozc_mode = False
 mozc_input_mode = False
