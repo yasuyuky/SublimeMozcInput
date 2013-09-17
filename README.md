@@ -64,14 +64,15 @@ Usage
 
 * `ctrl+¥` to toggle `mozc_mode`
 * Press any character key to enter `mozc_input_mode `
-* `mozc_input_mode`
-  * `space` key to convert
-  * `tab` key to show suggest
+
+`mozc_input_mode`
+* `space` key to convert
+* `tab` key to show suggest
 
 
 ### Set keybind to toggle mozc mode
 
-Default keybind to `toggle_mozc` on OSX/Linux is `ctrl+¥`
+Default keybind to `toggle_mozc` is `ctrl+¥`
 
 To change this, set your keybind file 
 (`Preferences` -> `Key Bindings - User`) like this.
@@ -143,7 +144,7 @@ You can access via `Preferences` -> `Package Settings`
 Feedback
 --------
 
-This plugin is tested on Ubuntu12.04 and Mac OSX.
+This plugin is tested on Mac OSX (10.7), Ubuntu12.04 and Windows 7.
 
 If you find a problem on your environment, report it.
 
