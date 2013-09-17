@@ -26,22 +26,19 @@ Screenshot
 Installation
 ------------
 
-1. Install Mozc and emacs-mozc (see official instruction)
-2. Check out the project and Copy `Mozc Input` directory 
-   to your **Packages** directory
-
+1. Install Mozc and emacs-mozc (see official instruction).
+2. Install this plugin using [Package Controll](https://sublime.wbond.net/)
+  (see instruction).
 
 
 ### Package Control
-Currently not unavalable
+Currently not available in Official Repository
 
-### Install plugin from github
-This is exsample.
-
-	cd /path/to/your/repo/directory
-    git clone git://guthub.com/yasuyuky/SublimeMozcInput
-	cd /path/to/your/packages/directory
-	ln -s /path/to/your/repo/directory/SublimeMozcInput/Input Mozc
+To Use Package Control,
+`Package Control: Add Repository`
+and add `https://github.com/yasuyuky/SublimeMozcInput`
+`Package Control: Install Package`
+Choose `SublimeMozcInput`
 
 ### Install Mozc to Linux Using Package Control
 #### Debian/Ubuntu
