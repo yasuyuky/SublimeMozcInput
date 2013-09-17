@@ -1,42 +1,37 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="SublimeMozcInput : " />
 
-  <title>SublimeMozcInput</title>
-  <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SublimeMozcInput</title>
+  </head>
 
-</head>
+  <body>
 
-<body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/yasuyuky/SublimeMozcInput">View on GitHub</a>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">SublimeMozcInput</h1>
-    </header>
-    <div id="container">
-      <p class="tagline"></p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/yasuyuky/SublimeMozcInput/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/yasuyuky/SublimeMozcInput/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/yasuyuky/SublimeMozcInput" class="code">View SublimeMozcInput on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h1>
+          <h1 id="project_title">SublimeMozcInput</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/yasuyuky/SublimeMozcInput/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/yasuyuky/SublimeMozcInput/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
 <a name="sublime-mozc-input" class="anchor" href="#sublime-mozc-input"><span class="octicon octicon-link"></span></a>Sublime Mozc Input</h1>
 
 <p>This is Sublime Text 2/3 Plugin for Using Mozc(<code>mozc_server</code>) 
@@ -162,8 +157,9 @@ to your /etc/yum.repos.d/</p>
 <h3>
 <a name="optional-settings" class="anchor" href="#optional-settings"><span class="octicon octicon-link"></span></a>Optional Settings</h3>
 
-<p>Set optional settings in <strong>MozcInput.sublime-settings</strong>.
-You can access via <code>Preferences</code> -&gt; <code>Package Settings</code> 
+<p>Set optional settings in <strong>MozcInput.sublime-settings</strong>.</p>
+
+<p>You can access via <code>Preferences</code> -&gt; <code>Package Settings</code> 
 -&gt; <code>Mozc Input</code> -&gt; <code>Settings - User</code></p>
 
 <pre><code>{
@@ -181,9 +177,13 @@ You can access via <code>Preferences</code> -&gt; <code>Package Settings</code>
   "mozc_highlight_style": "function",
   // default: "comment"
 
-  "mozc_use_quick_panel": false
+  "mozc_use_quick_panel_convert": true,
+  // default: false
+  // if you wanna use quick_panel for convert, set true
+
+  "mozc_use_quick_panel_suggest": false
   // default: true
-  // if you don't wanna use quick_panel for suggest
+  // if you don't wanna use quick_panel for suggest, set false
 }
 </code></pre>
 
@@ -195,26 +195,18 @@ You can access via <code>Preferences</code> -&gt; <code>Package Settings</code>
 <p>If you find a problem on your environment, report it.</p>
 
 <p><a href="https://github.com/yasuyuky" class="user-mention">@yasuyuky</a> on Twitter</p>
-        </article>
-      </div>
+      </section>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/yasuyuky" class="avatar"><img src="https://0.gravatar.com/avatar/c7cc3bd12795831fb50c9158e2b5425a?d=https%3A%2F%2Fidenticons.github.com%2F63362f610a3b912955c36f6323735632.png&amp;s=30" width="48" height="48"/></a> <a href="https://github.com/yasuyuky">yasuyuky</a> maintains <a href="https://github.com/yasuyuky/SublimeMozcInput">SublimeMozcInput</a></p>
 
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">SublimeMozcInput maintained by <a href="https://github.com/yasuyuky">yasuyuky</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/yasuyuky/SublimeMozcInput/tarball/master" class="tar">tar</a><a href="https://github.com/yasuyuky/SublimeMozcInput/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
+    
 
-  
-</body>
+  </body>
 </html>
