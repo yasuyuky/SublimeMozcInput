@@ -20,9 +20,6 @@ Screenshot
 ![Movie](https://yasuyuky.github.io/SublimeMozcInput/images/mozc_movie.gif)
 
 
-
-
-
 Installation
 ------------
 
@@ -115,6 +112,7 @@ Kotoeri like keybindings sample
 ### Optional Settings
 
 Set optional settings in **MozcInput.sublime-settings**.
+
 You can access via `Preferences` -> `Package Settings` 
 -> `Mozc Input` -> `Settings - User`
 
@@ -134,9 +132,13 @@ You can access via `Preferences` -> `Package Settings`
       "mozc_highlight_style": "function",
       // default: "comment"
 
-      "mozc_use_quick_panel": false
+      "mozc_use_quick_panel_convert": true,
+      // default: false
+      // if you wanna use quick_panel for convert, set true
+
+      "mozc_use_quick_panel_suggest": false
       // default: true
-      // if you don't wanna use quick_panel for suggest
+      // if you don't wanna use quick_panel for suggest, set false
     }
 
 

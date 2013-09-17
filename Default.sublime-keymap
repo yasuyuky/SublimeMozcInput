@@ -124,7 +124,11 @@
 	{"keys":["f10"],"command": "mozc_send_key","args":{"key": "f10"},"context": [{"key":"mozc_input_mode"}]},
 	{"keys":["ctrl+;"],"command": "mozc_send_key","args":{"key": "f10"},"context": [{"key":"mozc_input_mode"}]},
 
-	{"keys":["backspace"],"command": "hide_overlay", "args":{"index":0}, "context": [{"key":"mozc_qp_mode"}]},
+	{"keys":["backspace"], "command": "hide_overlay", "context": [{"key":"mozc_qp_mode"}]},
+	{"keys":["shift+tab"], "command": "move", "args": {"by": "lines", "forward": false}, "context": [{"key":"mozc_qp_mode"}]},
+	{"keys":["shift+space"], "command": "move", "args": {"by": "lines", "forward": false}, "context": [{"key":"mozc_qp_mode"}]},
+	{"keys":["tab"], "command": "move", "args": {"by": "lines", "forward": true}, "context": [{"key":"mozc_qp_mode"}]},
+	{"keys":[" "], "command": "move", "args": {"by": "lines", "forward": true}, "context": [{"key":"mozc_qp_mode"}]},
 
 	{
 		"keys": ["ctrl+g"], 

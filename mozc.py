@@ -12,8 +12,8 @@ PY2 = sys.version_info < (3, 0)
 if not PY2: basestring = str
 
 def init_mozc():
-    global helper, mozc_mode_line, mozc_input_mode_line
-    global mozc_highlight_style, mozc_use_quick_panel
+    global helper, mozc_mode_line, mozc_input_mode_line, mozc_highlight_style
+    global mozc_use_quick_panel_convert, mozc_use_quick_panel_suggest
     global mozc_debug_mode
     settings = sublime.load_settings("MozcInput.sublime-settings")
 
@@ -26,7 +26,8 @@ def init_mozc():
     mozc_mode_line = settings.get("mozc_mode_line", "[Mozc]")
     mozc_input_mode_line = settings.get("mozc_input_mode_line", u"✎Mozc")
     mozc_highlight_style = settings.get("mozc_highlight_style", "string")
-    mozc_use_quick_panel = settings.get("mozc_use_quick_panel", True)
+    mozc_use_quick_panel_convert = settings.get("mozc_use_quick_panel_convert", False)
+    mozc_use_quick_panel_suggest = settings.get("mozc_use_quick_panel_suggest", True)
     mozc_debug_mode = settings.get("mozc_debug_mode", False)
 
 # for Sublime Text 2
@@ -260,8 +261,11 @@ class MozcSendKeyCommand(sublime_plugin.TextCommand):
             else:
                 self.view.run_command("mozc_replace_text", {"text": ""})
                 self.view.run_command("mozc_end_input")
-            if performed == "Conversion_PredictAndConvert" or performed == "Conversion_ConvertNext":
-                if mozc_use_quick_panel:
+            if performed == "Conversion_ConvertNext":
+                if mozc_use_quick_panel_convert:
+                    self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
+            elif performed == "Conversion_PredictAndConvert" :
+                if mozc_use_quick_panel_suggest:
                     self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
             elif performed == "Conversion_Commit" or performed == "Composition_Commit":
                 self.view.run_command("mozc_end_input")
