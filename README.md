@@ -37,6 +37,8 @@ Currently not available in Official Repository
 To Use Package Control,
 `Package Control: Add Repository`
 and add `https://github.com/yasuyuky/SublimeMozcInput`
+
+then
 `Package Control: Install Package`
 Choose `SublimeMozcInput`
 
