@@ -11,6 +11,14 @@ import json
 PY2 = sys.version_info < (3, 0)
 if not PY2: basestring = str
 
+helper = None
+mozc_mode_line = ""
+mozc_input_mode_line = ""
+mozc_highlight_style = ""
+mozc_use_quick_panel_convert = False
+mozc_use_quick_panel_suggest = False
+mozc_debug_mode = False
+
 def init_mozc():
     global helper, mozc_mode_line, mozc_input_mode_line, mozc_highlight_style
     global mozc_use_quick_panel_convert, mozc_use_quick_panel_suggest
@@ -286,11 +294,3 @@ class MozcInputListener(sublime_plugin.EventListener):
             return mozc_input_mode
         elif key == "mozc_qp_mode":
             return mozc_qp_mode
-
-    def on_activated(self, view):
-        if not mozc_qp_mode:
-            view.run_command("deactivate_mozc")
-
-    def on_deactivated(self, view):
-        if not mozc_qp_mode:
-            view.run_command("deactivate_mozc")
