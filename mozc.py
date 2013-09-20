@@ -53,6 +53,7 @@ msg_count = 0
 sess_count = 0
 start_point = 0
 last_point = 0
+input_edit = None
 
 for w in sublime.windows():
     for v in w.views():
@@ -148,8 +149,9 @@ class DeactivateMozcCommand(sublime_plugin.TextCommand):
 class MozcReplaceTextCommand(sublime_plugin.TextCommand):
     def run(self, edit, text):
         input_region = self.view.get_regions("_mozc")
-        if not input_region: self.view.insert(edit, start_point, text)
-        else: self.view.replace(edit, input_region[0], text)
+        temp_edit = input_edit if sublime.version().startswith('2') else edit
+        if not input_region: self.view.insert(temp_edit, start_point, text)
+        else: self.view.replace(temp_edit, input_region[0], text)
         self.view.run_command("mozc_set_input_region")
 
 
@@ -184,7 +186,7 @@ class MozcHighlightCommand(sublime_plugin.TextCommand):
 
 class MozcStartInputCommand(sublime_plugin.TextCommand):
     def run(self, edit, key):
-        global mozc_input_mode, sess_count, start_point
+        global mozc_input_mode, sess_count, start_point, input_edit
         if mozc_mode:
             if not mozc_input_mode:
                 mozc_input_mode = True
@@ -193,6 +195,8 @@ class MozcStartInputCommand(sublime_plugin.TextCommand):
                 oobj = communicate('CreateSession')
                 print_debug("Start:", oobj)
                 sess_count = int(oobj["emacs-session-id"])
+                if sublime.version().startswith('2'):
+                    input_edit = self.view.begin_edit()
             self.view.run_command("mozc_send_key", {"key": key})
 
 
@@ -212,6 +216,8 @@ class MozcEndInputCommand(sublime_plugin.TextCommand):
             mozc_input_mode = False
             print_debug("End:", communicate('DeleteSession ', sess_count))
             sess_count += 1
+            if sublime.version().startswith('2'):
+                self.view.end_edit(input_edit)
             self.view.add_regions('_mozc', [], mozc_highlight_style)
             self.view.set_status('_mozc', mozc_mode_line)
 
