@@ -17,7 +17,7 @@ Requirements
 Screenshot
 ----------
 
-![Movie](https://github.com/yasuyuky/SublimeMozcInput/blob/gh-pages/images/mozc_movie.gif)
+![Movie](https://raw.github.com/yasuyuky/SublimeMozcInput/gh-pages/images/mozc_movie.gif)
 
 
 Installation
