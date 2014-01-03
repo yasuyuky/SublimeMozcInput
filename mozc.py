@@ -29,8 +29,12 @@ def init_mozc():
                                            "mozc_emacs_helper").split(),
                               stdin=subprocess.PIPE,
                               stdout=subprocess.PIPE)
-    helper.stdout.readline()
-
+    first_responce = helper.stdout.readline()
+    print(first_responce)
+    if not first_responce:
+        print("first_responce is empty check your 'mozc_emacs_helper' setting." )
+        print(settings.get("mozc_emacs_helper",
+                           "mozc_emacs_helper").split())
     mozc_mode_line = settings.get("mozc_mode_line", "[Mozc]")
     mozc_input_mode_line = settings.get("mozc_input_mode_line", u"✎Mozc")
     mozc_highlight_style = settings.get("mozc_highlight_style", "string")
@@ -226,27 +230,30 @@ class MozcInsertPreeditCommand(sublime_plugin.TextCommand):
     def run(self, edit, preedit):
         preeditstr = ''.join(e["value"] for e in preedit["segment"])
         self.view.run_command("mozc_replace_text", {"text": preeditstr})
-        if "highlighted-position" in preedit:
-            self.view.run_command("mozc_highlight",
-                                  {"highlight": int(preedit["highlighted-position"]),
-                                   "cursor": int(preedit["cursor"]),
-                                   "segments": preedit["segment"]})
-        else:
-            self.view.run_command("mozc_set_input_region")
+        highlight = int(preedit.get("highlighted-position", 0))
+        self.view.run_command("mozc_highlight",
+                              {"highlight": highlight,
+                               "cursor": int(preedit["cursor"]),
+                               "segments": preedit["segment"]})
 
 
 class MozcShowSuggestCommand(sublime_plugin.TextCommand):
     def run(self, edit, all_candidate):
         global mozc_qp_mode
-        candidates = [[c["value"], c["annotation"]["description"]] if "annotation" in c else [c["value"],""]
+        candidates = [[c["value"],
+                       c["annotation"]["description"]]
+                        if "annotation" in c and "description" in c["annotation"]
+                        else [c["value"],""]
                       for c in all_candidate["candidates"]]
         focused_idx = int(all_candidate['focused-index'])
-
+        if len(candidates) < 2: return
         def on_done(idx):
             global mozc_qp_mode
             mozc_qp_mode = False
-            if idx == -1: return
-            if idx > focused_idx:
+            print_debug(idx)
+            if idx == -1:
+                self.view.run_command("mozc_send_key", {"key":"backspace"})
+            elif idx > focused_idx:
                 for i in range(idx-focused_idx-1):
                     communicate('SendKey', "{0} {1}".format(sess_count, "down"))
                 oobj = communicate('SendKey', "{0} {1}".format(sess_count, "down"))["output"]
@@ -265,23 +272,17 @@ class MozcSendKeyCommand(sublime_plugin.TextCommand):
     def run(self, edit, key):
         if mozc_mode and not mozc_qp_mode:
             oobj = communicate('SendKey', "{0} {1}".format(sess_count, key))["output"]
-            if "performed-command" not in oobj: return
-            performed = oobj["performed-command"]
-            print_debug(key, performed)
+            print_debug("###",key,oobj)
             if 'result' in oobj:
                 self.view.run_command("mozc_fix_input")
             if 'preedit' in oobj:
                 self.view.run_command("mozc_insert_preedit", {"preedit": oobj["preedit"]})
+                if key == "tab" and mozc_use_quick_panel_suggest:
+                    self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
+                elif key == "space" and mozc_use_quick_panel_convert:
+                    self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
             else:
                 self.view.run_command("mozc_replace_text", {"text": ""})
-                self.view.run_command("mozc_end_input")
-            if performed == "Conversion_ConvertNext":
-                if mozc_use_quick_panel_convert:
-                    self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
-            elif performed == "Conversion_PredictAndConvert" :
-                if mozc_use_quick_panel_suggest:
-                    self.view.run_command("mozc_show_suggest", {"all_candidate": oobj["all-candidate-words"]})
-            elif performed == "Conversion_Commit" or performed == "Composition_Commit":
                 self.view.run_command("mozc_end_input")
 
 
