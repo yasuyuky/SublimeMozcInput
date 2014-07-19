@@ -271,6 +271,8 @@ class MozcShowSuggestCommand(sublime_plugin.TextCommand):
 class MozcSendKeyCommand(sublime_plugin.TextCommand):
     def run(self, edit, key):
         if mozc_mode and not mozc_qp_mode:
+            if len(key) == 1:
+                key = ord(key)
             oobj = communicate('SendKey', "{0} {1}".format(sess_count, key))["output"]
             print_debug("###",key,oobj)
             if 'result' in oobj:
