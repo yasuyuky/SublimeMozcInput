@@ -51,6 +51,7 @@
 	{"keys":["X"],"command":"mozc_start_input","args":{"key":"X"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["Y"],"command":"mozc_start_input","args":{"key":"Y"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["Z"],"command":"mozc_start_input","args":{"key":"Z"},"context":[{"key":"mozc_mode"}]},
+	{"keys":["shift+space"],"command":"insert","args":{"characters":"　"},"context":[{"key":"mozc_mode"}]},
 
 	{"keys":["0"],"command":"mozc_start_input","args":{"key":"numpad0"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["1"],"command":"mozc_start_input","args":{"key":"numpad1"},"context":[{"key":"mozc_mode"}]},
@@ -83,7 +84,7 @@
 	{"keys":[";"],"command":"mozc_start_input","args":{"key":";"},"context":[{"key":"mozc_mode"}]},
 	{"keys":[":"],"command":"mozc_start_input","args":{"key":":"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["+"],"command":"mozc_start_input","args":{"key":"+"},"context":[{"key":"mozc_mode"}]},
-	{"keys":["*"],"command":"mozc_start_input","args":{"key":"*"},"context":[{"key":"mozc_mode"}]},	
+	{"keys":["*"],"command":"mozc_start_input","args":{"key":"*"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["["],"command":"mozc_start_input","args":{"key":"["},"context":[{"key":"mozc_mode"}]},
 	{"keys":["]"],"command":"mozc_start_input","args":{"key":"]"},"context":[{"key":"mozc_mode"}]},
 	{"keys":["{"],"command":"mozc_start_input","args":{"key":"{"},"context":[{"key":"mozc_mode"}]},
@@ -131,7 +132,7 @@
 	{"keys":[" "], "command": "move", "args": {"by": "lines", "forward": true}, "context": [{"key":"mozc_qp_mode"}]},
 
 	{
-		"keys": ["ctrl+g"], 
+		"keys": ["ctrl+g"],
 		"command": "mozc_send_key",
 		"args": {
 			"key": "enter"
